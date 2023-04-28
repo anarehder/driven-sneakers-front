@@ -1,7 +1,6 @@
 import styled  from "styled-components";
 
 export const ScreenContainer = styled.div`
-    //background-color: #cecece;
     background-color: #fff;
     z-index: 1;
     position: fixed;
@@ -12,7 +11,7 @@ export const ScreenContainer = styled.div`
 `
 
 export const BarContainer = styled.div`
-    margin-top: 15px;
+    margin: 15px auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,6 +20,7 @@ export const BarContainer = styled.div`
 `
 
 export const LogoContainer = styled.div`
+
     a{
         text-decoration: none;
         color: #000;
@@ -31,7 +31,7 @@ export const LogoContainer = styled.div`
 `
 
 export const InputContainer = styled.div`
-    width: 310px;
+    width: 300px;
     input{
             height: 30px;
             width: 310px;
@@ -41,7 +41,7 @@ export const InputContainer = styled.div`
         }
 `
 
-export const SignUpContainer = styled.div`
+export const FunctionsContainer = styled.div`
     display: flex;
     align-items: center;
     width: 310px;
@@ -55,9 +55,36 @@ export const SignUpContainer = styled.div`
         background-color: #fff;
     }
     ion-icon{
-        width: 40px;
+        width: 45px;
         height: 40px;
         cursor: pointer;
         color: #387A77;
+        :hover{
+            color: #488b88;
+        }
+    }
+    
+`
+
+export const SignUpContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    cursor: pointer;
+    box-sizing: border-box;
+    span{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', Verdana, sans-serif;
+        font-size: 15px;
+        color: #387A77;
+        margin-left: 2px;
+    }
+    :hover{
+        span{
+            color: #488b88;
+        }
+        ion-icon{
+            color: #488b88;
+        }
     }
 `
