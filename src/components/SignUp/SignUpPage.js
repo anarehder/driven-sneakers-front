@@ -8,7 +8,7 @@ import {
 import { useState, useContext } from "react";
 import logo from "../../assets/logo.png";
 import { useNavigate, Link } from "react-router-dom";
-import { UserContext } from "../../context/UserContext";
+import { UserContext } from "../../contexts/UserContext";
 import { signin } from "../../services/auth";
 
 export default function SignUpPage() {
