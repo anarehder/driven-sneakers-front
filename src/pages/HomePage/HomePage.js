@@ -18,7 +18,6 @@ export default function HomePage() {
     setCarregando(true);
     const promise = axios.get(`${process.env.REACT_APP_API_URL}/`);
     promise.then(resposta => {
-      console.log(resposta.data)
       setProducts(resposta.data);
       setCarregando(false);
     })

@@ -20,7 +20,6 @@ export const BarContainer = styled.div`
 `
 
 export const LogoContainer = styled.div`
-
     a{
         text-decoration: none;
         color: #000;
@@ -31,7 +30,7 @@ export const LogoContainer = styled.div`
 `
 
 export const InputContainer = styled.div`
-    width: 300px;
+    width: 310px;
     input{
             height: 30px;
             width: 310px;

@@ -25,6 +25,7 @@ export default function SignUpPage() {
 
   function handleSendForm(e) {
     e.preventDefault();
+    console.log(form)
     signin(form).then((res) => {
       if (res.data.message) {
         return alert(res.data.message);
@@ -79,7 +80,7 @@ export default function SignUpPage() {
               })
             }
           />
-          <button onClick={handleSendForm}>Entrar</button>
+          <button onClick={handleSendForm}>Cadastrar</button>
         </form>
         <Link to="/signin">Ja possui cadastro? Faça seu Login.</Link>
       </SignInContainer>
