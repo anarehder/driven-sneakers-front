@@ -7,6 +7,8 @@ import { Cart } from "../../contexts/CartContext";
 export default function HomePage() {
 
   const [cartItems, setCartItems] = useContext(Cart);
+  // PARA USAR QUANDO FOR CONECTAR COM O BACKEND
+  //const promise = axios.get(`${process.env.REACT_APP_API_URL}/operations`, config);
 
   function addToCart(product) {
     if (cartItems.some(element => element.id === product._id)) {
