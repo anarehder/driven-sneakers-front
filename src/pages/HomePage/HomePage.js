@@ -1,13 +1,14 @@
 import Header from "../../components/Header/Header";
-import { ProductsContainer, ProductCard, ButtonBuy } from "./StyledHomePage.js";
+import { ProductsContainer, ProductCard, ButtonBuy, ProductNamePrice } from "./StyledHomePage.js";
 import { useContext, useEffect, useState } from "react";
 import { Cart } from "../../contexts/CartContext";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
 
   const [cartItems, setCartItems] = useContext(Cart);
-  const [products, setProducts] = useContext(Cart);
+  const [products, setProducts] = useState([]);
   const [carregando, setCarregando] = useState(false);
 
   // PARA USAR QUANDO FOR CONECTAR COM O BACKEND
@@ -61,12 +62,17 @@ export default function HomePage() {
         {products.map((product) => (
           <ProductCard key={product._id}>
             <img src={product.image} alt="produto" />
-            <div>
+            <ProductNamePrice>
               <span>{product.name}</span>{" "}
-              <span>R$ {Number(product.price).toFixed(2)}</span>
-            </div>
+              <span>R$ {Number(product.price).toFixed(2).replace(".", ",")}</span>
+            </ProductNamePrice>
             <div>{product.description}</div>
-            <ButtonBuy onClick={() => addToCart(product)}>COMPRE</ButtonBuy>
+            <div>
+              <ion-icon onClick={() => addToCart(product)} name="cart-outline" ></ion-icon>
+              <Link to={"/checkout"}>
+                <ButtonBuy onClick={() => addToCart(product)}>COMPRAR</ButtonBuy>
+              </Link>
+            </div>
           </ProductCard>
         ))}
       </ProductsContainer>
