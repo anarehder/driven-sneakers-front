@@ -1,8 +1,9 @@
 import Header from "../../components/Header/Header";
-import { Cabeçalho, CheckoutContainer, Conteudo, DadosEntrega, Finalizar, Avaliacao, ProdutosCarrinho, Total } from "./StyledCheckoutPage";
+import { Cabeçalho, CheckoutContainer, DadosEntrega, Finalizar, Avaliacao, ProdutosCarrinho, Total } from "./StyledCheckoutPage";
 import ratingCode from "../../assets/My_Rating_Page.png";
 import { useContext } from "react";
 import { Cart } from "../../contexts/CartContext";
+import CartItems from "../../components/CartItems/CartItems";
 
 export default function CheckoutPage() {
     const [cartItems,] = useContext(Cart);
@@ -11,6 +12,7 @@ export default function CheckoutPage() {
     cartItems.forEach(element => (soma += Number(element.price)));
 
     console.log(cartItems)
+    
     return (
         <>
             <Header />
@@ -24,18 +26,7 @@ export default function CheckoutPage() {
                             <span>PREÇO</span>
                         </div>
                     </Cabeçalho>
-                    {cartItems.map((product) => (
-                        <Conteudo key = {product.id}>
-                            <div>
-                                <img src={product.image} alt="produto" />
-                                <p>{product.name}</p>{" "}
-                            </div>
-                            <div>
-                                <span> {product.amount} </span>
-                                <span>R$ {Number(product.price).toFixed(2).replace(".",",")}</span>
-                            </div>
-                        </Conteudo>
-                    ))}
+                    {cartItems.map((product) => ( <CartItems key={product.id} product={product}></CartItems>))}
                     <Total>
                         <p> Total</p>
                         <p> R$ {soma.toFixed(2).replace(".",",")} </p>

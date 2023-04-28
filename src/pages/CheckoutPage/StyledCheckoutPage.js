@@ -28,42 +28,22 @@ export const Cabeçalho = styled.div`
         align-items: center;
         gap: 30px;
         text-align: center;
+        margin-right: 50px;
     }
     span{
         width: 150px;
     }
 `
 
-export const Conteudo = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    text-align: justify;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #387A77;
-    div{
-        display: flex;
-        align-items: center;
-        gap: 30px;
-    }
-    img {
-        width: 100px;
-    }
-    span{
-        width: 150px;
-        text-align: center;
-
-    }
-`
 
 export const Total = styled.div`
     margin: 15px 0;
-    width: 100%;
+    width: calc(100% - 50px);
     display: flex;
     justify-content: flex-end;
     padding-bottom: 10px;
     gap: 30px;
+    margin-right: 50px;
     p{
         width: 150px;
     }

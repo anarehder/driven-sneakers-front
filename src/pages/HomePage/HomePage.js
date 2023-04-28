@@ -11,9 +11,6 @@ export default function HomePage() {
   const [products, setProducts] = useState([]);
   const [carregando, setCarregando] = useState(false);
 
-  // PARA USAR QUANDO FOR CONECTAR COM O BACKEND
-  //const promise = axios.get(`${process.env.REACT_APP_API_URL}/operations`, config);
-
   useEffect(() => {
     setCarregando(true);
     const promise = axios.get(`${process.env.REACT_APP_API_URL}/`);
