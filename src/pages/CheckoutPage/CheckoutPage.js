@@ -1,9 +1,16 @@
 import Header from "../../components/Header/Header";
 import { Cabeçalho, CheckoutContainer, Conteudo, DadosEntrega, Finalizar, Avaliacao, ProdutosCarrinho, Total } from "./StyledCheckoutPage";
-import products from "../../constants/productsExample.js";
 import ratingCode from "../../assets/My_Rating_Page.png";
+import { useContext } from "react";
+import { Cart } from "../../contexts/CartContext";
 
 export default function CheckoutPage() {
+    const [cartItems,] = useContext(Cart);
+
+    let soma = 0;
+    cartItems.forEach(element => (soma += element.price));
+
+
     return (
         <>
             <Header />
@@ -17,19 +24,21 @@ export default function CheckoutPage() {
                             <span>PREÇO</span>
                         </div>
                     </Cabeçalho>
-                    <Conteudo>
-                        <div>
-                            <img src={products[1].image} alt="produto" />
-                            <p>{products[1].product}</p>{" "}
-                        </div>
-                        <div>
-                            <span> 1 </span>
-                            <span>R$ {products[1].price.toFixed(2)}</span>
-                        </div>
-                    </Conteudo>
+                    {cartItems.map((product) => (
+                        <Conteudo key = {product.id}>
+                            <div>
+                                <img src={product.image} alt="produto" />
+                                <p>{product.name}</p>{" "}
+                            </div>
+                            <div>
+                                <span> {product.amount} </span>
+                                <span>R$ {product.price.toFixed(2).replace(".",",")}</span>
+                            </div>
+                        </Conteudo>
+                    ))}
                     <Total>
                         <p> Total</p>
-                        <p> R$ {products[1].price.toFixed(2)} </p>
+                        <p> R$ {soma.toFixed(2).replace(".",",")} </p>
                     </Total>
                 </ProdutosCarrinho>
                 ENDERECO DE ENTREGA
@@ -39,7 +48,7 @@ export default function CheckoutPage() {
                 </DadosEntrega>
                 AVALIE NOSSA LOJA
                 <Avaliacao>
-                    <img src={ratingCode} alt="avaliacao"/>
+                    <img src={ratingCode} alt="avaliacao" />
                 </Avaliacao>
                 CONFIRMAR E FINALIZAR PEDIDO
                 <Finalizar>
