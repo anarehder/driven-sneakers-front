@@ -8,9 +8,9 @@ export default function CheckoutPage() {
     const [cartItems,] = useContext(Cart);
 
     let soma = 0;
-    cartItems.forEach(element => (soma += element.price));
+    cartItems.forEach(element => (soma += Number(element.price)));
 
-
+    console.log(cartItems)
     return (
         <>
             <Header />
@@ -32,7 +32,7 @@ export default function CheckoutPage() {
                             </div>
                             <div>
                                 <span> {product.amount} </span>
-                                <span>R$ {product.price.toFixed(2).replace(".",",")}</span>
+                                <span>R$ {Number(product.price).toFixed(2).replace(".",",")}</span>
                             </div>
                         </Conteudo>
                     ))}

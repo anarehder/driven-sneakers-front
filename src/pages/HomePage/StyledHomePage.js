@@ -19,15 +19,14 @@ export const ProductsContainer = styled.div`
 export const ProductCard = styled.div`
     position: relative;
     box-sizing: border-box  ;
-    width: 300px;
-    height: 300px;
-    border: solid 1px black;
+    width: 310px;
+    border: 3px solid #387A77;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin: 20px;
     background-size: cover;
-
     img{
         border-radius: 5px;
         width: 298px;
@@ -39,17 +38,32 @@ export const ProductCard = styled.div`
         justify-content: space-between;
         padding: 5px;
     }
+    ion-icon{
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        color: #387A77;
+    }
+
+`
+
+export const ProductNamePrice = styled.div`
+    width: 100%;
+    span{
+        padding: 2px;
+        max-width: 220px;
+        gap: 10px;
+        font-size: 16px;
+    }
 `
 
 export const ButtonBuy= styled.button`
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background-color: red;
-    border: none;
+    background-color: #fff;
+    border: 2px solid #387A77;
     border-radius: 7px;
     margin-top: 5px;
-    width: 100px;
+    margin-left: 15px;
+    width: 120px;
     height: 35px;
     font-size: 18px;
     cursor: pointer;
