@@ -44,7 +44,7 @@ export default function HomePage() {
       setCartItems(cartItems);
     } else {
       const newItem = {
-        id: product._id, amount: 1,
+        productID: product._id, productAmout: 1,
         name: product.name, image: product.image, price: product.price
       };
       setCartItems([...cartItems, newItem]);

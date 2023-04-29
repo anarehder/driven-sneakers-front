@@ -25,12 +25,15 @@ export default function SignUpPage() {
 
   function handleSendForm(e) {
     e.preventDefault();
+    console.log(form)
     signin(form).then((res) => {
       if (res.data.message) {
         return alert(res.data.message);
       }
-
-      setUser(res.data.token);
+      console.log(res.data)
+      const novoUser = {userID: res.data.userId, token: res.data.token, email: form.email};
+      setUser(novoUser);
+      //setUser(res.data.token);
       navigate("/");
     });
   }

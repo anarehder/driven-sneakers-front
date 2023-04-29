@@ -7,8 +7,8 @@ export default function CartItems({ product }) {
 
     function deleteFromCart (id) {
         console.log(id);
-        if (cartItems.some(element => element.id === id)) {
-            const newCart = cartItems.filter(element => element.id !== id)
+        if (cartItems.some(element => element.productID === id)) {
+            const newCart = cartItems.filter(element => element.productID !== id)
             setCartItems(newCart);
         }
     }
@@ -21,9 +21,9 @@ export default function CartItems({ product }) {
                 <p>{product.name}</p>{" "}
             </div>
             <div>
-                <span> {product.amount} </span>
+                <span> {product.productAmout} </span>
                 <span>R$ {Number(product.price).toFixed(2).replace(".", ",")}</span>
-                <Deletar onClick={() => deleteFromCart(product.id)}> x </Deletar>
+                <Deletar onClick={() => deleteFromCart(product.productID)}> x </Deletar>
             </div>
         </Conteudo>
         </>

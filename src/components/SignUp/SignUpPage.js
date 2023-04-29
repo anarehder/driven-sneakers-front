@@ -9,7 +9,7 @@ import { useState, useContext } from "react";
 import logo from "../../assets/logo.png";
 import { useNavigate, Link } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
-import { signin } from "../../services/auth";
+import { signup } from "../../services/auth";
 
 export default function SignUpPage() {
   const [form, setForm] = useState({});
@@ -26,7 +26,7 @@ export default function SignUpPage() {
   function handleSendForm(e) {
     e.preventDefault();
     console.log(form)
-    signin(form).then((res) => {
+    signup(form).then((res) => {
       if (res.data.message) {
         return alert(res.data.message);
       }
