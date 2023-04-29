@@ -1,12 +1,17 @@
 import Header from "../../components/Header/Header";
-import { ProductsContainer, ProductCard, ButtonBuy, ProductNamePrice } from "./StyledHomePage.js";
+import {
+  ProductsContainer,
+  ProductCard,
+  ButtonBuy,
+  ProductNamePrice,
+} from "./StyledHomePage.js";
 import { useContext, useEffect, useState } from "react";
 import { Cart } from "../../contexts/CartContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Loading from "../../css/Loading";
 
 export default function HomePage() {
-
   const [cartItems, setCartItems] = useContext(Cart);
   const [products, setProducts] = useState([]);
   const [carregando, setCarregando] = useState(false);
@@ -14,41 +19,45 @@ export default function HomePage() {
   useEffect(() => {
     setCarregando(true);
     const promise = axios.get(`${process.env.REACT_APP_API_URL}/`);
-    promise.then(resposta => {
+    promise.then((resposta) => {
       setProducts(resposta.data);
       setCarregando(false);
-    })
-    promise.catch(erro => {
+    });
+    promise.catch((erro) => {
       alert(erro.response.data);
-    })
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
-  if (carregando === true) {
-    return (
-      <>
-        <Header>
-          CARREGANDO...
-        </Header>
-      </>
-    )
-  }
+  
 
   function addToCart(product) {
-    if (cartItems.some(element => element.id === product._id)) {
-      cartItems.forEach(element => {
+    if (cartItems.some((element) => element.id === product._id)) {
+      cartItems.forEach((element) => {
         if (element.id === product._id) {
-          element.amount++
+          element.amount++;
         }
-      })
+      });
       setCartItems(cartItems);
     } else {
       const newItem = {
-        productID: product._id, productAmout: 1,
-        name: product.name, image: product.image, price: product.price
+        productID: product._id,
+        productAmout: 1,
+        name: product.name,
+        image: product.image,
+        price: product.price,
       };
       setCartItems([...cartItems, newItem]);
     }
+  }
+
+  if (products.length === 0 || carregando === true) {
+    return (
+      <>
+        <Header />
+        <Loading />
+      </>
+    );
   }
 
   return (
@@ -60,13 +69,20 @@ export default function HomePage() {
             <img src={product.image} alt="produto" />
             <ProductNamePrice>
               <span>{product.name}</span>{" "}
-              <span>R$ {Number(product.price).toFixed(2).replace(".", ",")}</span>
+              <span>
+                R$ {Number(product.price).toFixed(2).replace(".", ",")}
+              </span>
             </ProductNamePrice>
             <div>{product.description}</div>
             <div>
-              <ion-icon onClick={() => addToCart(product)} name="cart-outline" ></ion-icon>
+              <ion-icon
+                onClick={() => addToCart(product)}
+                name="cart-outline"
+              ></ion-icon>
               <Link to={"/checkout"}>
-                <ButtonBuy onClick={() => addToCart(product)}>COMPRAR</ButtonBuy>
+                <ButtonBuy onClick={() => addToCart(product)}>
+                  COMPRAR
+                </ButtonBuy>
               </Link>
             </div>
           </ProductCard>
