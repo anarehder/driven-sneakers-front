@@ -65,12 +65,30 @@ export default function CheckoutPage() {
     );
 
     promise.then((resposta) => {
-      alert(`Olá, sua compra foi efetuada com sucesso!!`);
+      Swal.fire({
+        title: "Olá, sua compra foi efetuada com sucesso!!",
+        icon: "success",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
       setCartItems([]);
       navigate("/");
     });
     promise.catch((erro) => {
-      alert(erro.response.data);
+      Swal.fire({
+        title: erro.response.data,
+        icon: "error",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
     });
   }
 
