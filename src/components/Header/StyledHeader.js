@@ -62,6 +62,23 @@ export const FunctionsContainer = styled.div`
             color: #488b88;
         }
     }
+    a{
+        position: relative;
+    }
+    p{
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: red;
+        width: 20px;
+        height: 20px;
+        border-radius:20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-family: sans-serif;
+    }
     
 `
 

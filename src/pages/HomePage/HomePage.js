@@ -17,6 +17,7 @@ export default function HomePage() {
   const [cartItems, setCartItems] = useContext(Cart);
   const [products, setProducts] = useState([]);
   const [carregando, setCarregando] = useState(false);
+  const [addCartHeader, setAddCartHeader] = useState(0)
 
   useEffect(() => {
     setCarregando(true);
@@ -32,6 +33,7 @@ export default function HomePage() {
   }, []);
 
   function addToCart(product) {
+    setAddCartHeader(addCartHeader+1)
     if (cartItems.some((element) => element.id === product._id)) {
       cartItems.forEach((element) => {
         if (element.id === product._id) {
@@ -62,7 +64,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Header />
+      <Header/>
       <ProductsContainer>
         {products.map((product) => (
           <ProductCard key={product._id}>
