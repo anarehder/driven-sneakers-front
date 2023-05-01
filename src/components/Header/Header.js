@@ -31,7 +31,7 @@ export default function Header() {
                         <ion-icon name="cart-outline" ></ion-icon>
                         {itens.length===0?"":<p>{itens.length}</p>}
                     </Link>
-                    <ion-icon name="exit-outline" onClick={setItens}></ion-icon>
+                    <ion-icon name="exit-outline"></ion-icon>
                     </>
                 </FunctionsContainer>
             </BarContainer>

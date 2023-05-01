@@ -14,7 +14,7 @@ export const ProductsContainer = styled.div`
   min-height: 80vh;
   background-color: #fff;
   border-radius: 8px;
-  border: 1px solid red;
+  border: 1px solid #92f0ed;
 `;
 
 export const ProductCard = styled.div`
