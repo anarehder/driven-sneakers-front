@@ -8,7 +8,7 @@ import { Cart } from "../../contexts/CartContext";
 
 export default function Header() {
     const navigate = useNavigate()
-    const [itens, setItens] = useContext(Cart)
+    const [itens] = useContext(Cart)
 
     return (
         <ScreenContainer>
