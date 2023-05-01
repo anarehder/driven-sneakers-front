@@ -2,7 +2,9 @@ import Header from "../../components/Header/Header";
 import {
   ProductsContainer,
   ProductCard,
+  ProductCard2,
   ButtonBuy,
+  ButtonsContainer,
   ProductNamePrice,
 } from "./StyledHomePage.js";
 import { useContext, useEffect, useState } from "react";
@@ -28,8 +30,6 @@ export default function HomePage() {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  
 
   function addToCart(product) {
     if (cartItems.some((element) => element.id === product._id)) {
@@ -66,25 +66,27 @@ export default function HomePage() {
       <ProductsContainer>
         {products.map((product) => (
           <ProductCard key={product._id}>
-            <img src={product.image} alt="produto" />
-            <ProductNamePrice>
-              <span>{product.name}</span>{" "}
-              <span>
-                R$ {Number(product.price).toFixed(2).replace(".", ",")}
-              </span>
-            </ProductNamePrice>
-            <div>{product.description}</div>
-            <div>
-              <ion-icon
-                onClick={() => addToCart(product)}
-                name="cart-outline"
-              ></ion-icon>
-              <Link to={"/checkout"}>
-                <ButtonBuy onClick={() => addToCart(product)}>
-                  COMPRAR
-                </ButtonBuy>
-              </Link>
-            </div>
+            <ProductCard2>
+              <img src={product.image} alt="produto" />
+              <ProductNamePrice>
+                <span>{product.name}</span>{" "}
+                <span>
+                  R$ {Number(product.price).toFixed(2).replace(".", ",")}
+                </span>
+              </ProductNamePrice>
+              <p>{product.description}</p>
+              <ButtonsContainer>
+                <ion-icon
+                  onClick={() => addToCart(product)}
+                  name="cart-outline"
+                ></ion-icon>
+                <Link to={"/checkout"}>
+                  <ButtonBuy onClick={() => addToCart(product)}>
+                    <span>COMPRAR</span>
+                  </ButtonBuy>
+                </Link>
+              </ButtonsContainer>
+            </ProductCard2>
           </ProductCard>
         ))}
       </ProductsContainer>
